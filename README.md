@@ -12,43 +12,76 @@ This repository contains standardized closing procedures to ensure:
 
 ## Contents
 
-- **`index.html`** - Interactive web-based tracker (recommended)
-- **`CLOSING_CHECKLIST.md`** - Complete daily closing duties checklist (Markdown)
-- **`QUICK_REFERENCE.md`** - Quick reference guide for common tasks
-- `styles.css` - Styling for web tracker
-- `script.js` - Tracker functionality
+### 🔥 Firebase Version (Centralized Tracking - Recommended)
+- **`index-firebase.html`** - Firebase-integrated tracker with manager dashboard
+- **`script-firebase.js`** - Firebase functionality
+- **`firebase-config.js`** - Firebase configuration
+- **`firestore.rules`** - Database security rules
+- **`FIREBASE_SETUP.md`** - Complete setup instructions
 
-## 🌐 Interactive Web Tracker
+### 💾 Local Version (Individual Tracking)
+- `index.html` - Standalone tracker (no central database)
+- `script.js` - Local storage functionality
 
-The **recommended way** to use this checklist is through the interactive web tracker:
+### 📄 Documentation
+- **`CLOSING_CHECKLIST.md`** - Complete checklist (Markdown)
+- **`QUICK_REFERENCE.md`** - Quick reference guide
+- `styles.css` - Shared styling for both versions
+
+## 🔥 Firebase Version - Centralized Tracking (RECOMMENDED)
+
+**Perfect for managers who need centralized visibility and reporting**
 
 ### Features
-- ✅ Real-time progress tracking with visual progress bar
-- 💾 Auto-saves progress throughout the day
-- 📅 Date-stamped daily completion logs
-- 📊 View completion history with detailed statistics
-- 📥 Export data to CSV or JSON format
-- 🖨️ Print-friendly format
-- 👤 Associate name tracking
-- 📝 Notes section for issues/comments
-- 🔄 Easy reset for next shift
+- 👤 **Associate View:**
+  - Real-time progress tracking with visual progress bar
+  - Auto-saves progress to Firebase
+  - Date-stamped daily completion logs
+  - Personal history view
+  - Export individual data to CSV/JSON
 
-### How to Use
+- 📊 **Manager Dashboard:**
+  - Real-time view of all associate submissions
+  - Statistics: total submissions, completion rates, averages
+  - Filter by date (today, week, month, all time)
+  - See who's completed vs. in progress
+  - Export all data for reporting
+  - Track trends over time
 
-1. **Open the tracker:** Double-click `index.html` or open it in your web browser
-2. **Enter your name** in the Associate Name field
-3. **Check off tasks** as you complete them (progress updates automatically)
-4. **Add notes** about any issues or important information
-5. **Save Daily Log** when finished (creates permanent record)
-6. **View History** to see past completion logs
-7. **Export data** to CSV/JSON for reporting
+### Quick Start
+
+1. **Open:** `index-firebase.html`
+2. **Associates:** Enter name → Complete checklist → Save to Firebase
+3. **Managers:** Click "📊 Manager Dashboard" button
+4. **Setup Required:** See `FIREBASE_SETUP.md` for one-time configuration
 
 ### Data Storage
 
-- All data is stored locally in your browser (no internet required)
-- Progress auto-saves as you work
-- Daily logs are preserved in history
-- Export functionality for backup/reporting
+- ✅ Centralized in Firebase (care-card-lite project)
+- ✅ All associates' data visible to everyone
+- ✅ Real-time synchronization
+- ✅ Permanent record (cannot be deleted/modified)
+- ✅ Internet required
+
+---
+
+## 💾 Local Version - Individual Tracking
+
+**For associates who want private, offline tracking**
+
+### Features
+- ✅ Real-time progress tracking
+- 💾 Saves to browser only (private)
+- 📅 Personal completion history
+- 📥 Export personal data
+- 🔒 No data sharing
+- 📴 Works offline
+
+### How to Use
+
+1. **Open:** `index.html`
+2. **Complete checklist** and save
+3. **Data stays on your device only**
 
 ## 📄 Markdown Version
 

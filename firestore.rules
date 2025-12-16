@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // OPD Closing Logs Collection
+    match /opd_closing_logs/{logId} {
+      // Allow anyone to create new logs (associates submitting checklists)
+      allow create: if request.resource.data.keys().hasAll(['associate', 'date', 'timestamp'])
+                    && request.resource.data.associate is string
+                    && request.resource.data.associate.size() > 0;
+
+      // Allow anyone to read logs (for manager dashboard and associate history)
+      allow read: if true;
+
+      // Prevent updates and deletes (logs should be immutable)
+      allow update, delete: if false;
+    }
+  }
+}

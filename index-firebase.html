@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPD Closing Duties Tracker - Firebase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏪 OPD Closing Duties Tracker</h1>
+            <div class="date-display" id="dateDisplay"></div>
+            <div class="mode-selector">
+                <button id="associateMode" class="mode-btn active">👤 Associate View</button>
+                <button id="managerMode" class="mode-btn">📊 Manager Dashboard</button>
+            </div>
+        </header>
+
+        <!-- Associate View -->
+        <div id="associateView" class="view-container">
+            <div class="associate-info">
+                <label for="associateName">Associate Name:</label>
+                <input type="text" id="associateName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">0% Complete</div>
+            </div>
+
+            <div class="checklist-container" id="checklistContainer">
+                <!-- Section 1: Check Undispensed Orders -->
+                <div class="checklist-section">
+                    <h2>1. Check Undispensed Orders</h2>
+                    <div class="section-note">⏰ Complete 1-2 hours before OPD closing</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="1" data-item="1">
+                            <span>Call customers who did not pick up orders</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="1" data-item="2">
+                            <span>Call customers whose orders were returned by delivery driver</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="1" data-item="3">
+                            <span>Ask customers: pick up, redeliver, or cancel</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 2: Handle Pickup Orders -->
+                <div class="checklist-section">
+                    <h2>2. Handle Pickup Orders</h2>
+                    <div class="section-note">⚠️ Cancel same-day if not picked up</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="2" data-item="1">
+                            <span>Dispense already-received orders in GIF Dispense</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="2" data-item="2">
+                            <span>Direct customers to cancel via app/website or Customer Care (1-800-Walmart)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="2" data-item="3">
+                            <span>Contact Store Support for cancellations on customer's behalf</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="2" data-item="4">
+                            <span>Leave pick-up orders in staging area</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="2" data-item="5">
+                            <span>Cancel same-day unpicked orders</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 3: Handle Delivery Orders -->
+                <div class="checklist-section">
+                    <h2>3. Handle Delivery Orders</h2>
+                    <div class="section-note">⚠️ Cancel same-day if not picked up</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="3" data-item="1">
+                            <span>Request new driver through GIF Dispense → Orders Needing Attention</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="3" data-item="2">
+                            <span>Cancel delivery orders through GIF Dispense → Orders Needing Attention</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="3" data-item="3">
+                            <span>Convert delivery to pickup in GIF MyStore → Dispense Exceptions</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="3" data-item="4">
+                            <span>Cancel same-day unpicked delivery orders</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 4: Process Returns -->
+                <div class="checklist-section">
+                    <h2>4. Process Returns</h2>
+                    <div class="section-note">📦 Complete by end of day</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="4" data-item="1">
+                            <span>Return refunded items to modular home</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="4" data-item="2">
+                            <span>Take damaged items (with order numbers) to claims</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 5: Clean and Prepare Area -->
+                <div class="checklist-section">
+                    <h2>5. Clean and Prepare Area</h2>
+                    <div class="section-note">🧹 Complete by 10 PM</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="1">
+                            <span>Clean Backroom Crew Board</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="2">
+                            <span>Stack and organize dollies and handles</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="3">
+                            <span>Stack all empty totes and containers</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="4">
+                            <span>Remove and set aside visibly dirty totes</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="5">
+                            <span>Clean dirty totes (Clean in Place or 3-compartment sink)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="6">
+                            <span>Remove tote labels and residue</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="7">
+                            <span>Stock pick carts (bags, labels, produce/meat bags, reusable bags)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="5" data-item="8">
+                            <span>Clean floors and remove garbage</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 6: Secure Resources -->
+                <div class="checklist-section">
+                    <h2>6. Secure Resources</h2>
+                    <div class="section-note">🔒 Final security checks</div>
+                    <div class="checklist-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="1">
+                            <span>Place handheld batteries on chargers</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="2">
+                            <span>Place portable printer batteries on chargers</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="3">
+                            <span>Clear all messages/texts from Pickup cell phone</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="4">
+                            <span>Verify NO customer contact data saved on phone</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="5">
+                            <span>Check voicemail is up to date</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="6">
+                            <span>Place OPD cell phone on charger</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="7">
+                            <span>Lock storage cabinet</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="8">
+                            <span>Lock filing cabinet</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="9">
+                            <span>Lock safe</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" data-section="6" data-item="10">
+                            <span>Place all keys in lockbox</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="saveLog" class="btn btn-primary">💾 Save to Firebase</button>
+                <button id="viewHistory" class="btn btn-secondary">📊 My History</button>
+                <button id="resetChecklist" class="btn btn-warning">🔄 Reset Checklist</button>
+                <button id="printChecklist" class="btn btn-info">🖨️ Print</button>
+            </div>
+
+            <div class="notes-section">
+                <h3>Notes / Issues:</h3>
+                <textarea id="notes" placeholder="Enter any notes, issues, or comments for today's shift..."></textarea>
+            </div>
+        </div>
+
+        <!-- Manager Dashboard -->
+        <div id="managerView" class="view-container" style="display: none;">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h2>📊 Manager Dashboard</h2>
+                    <div class="dashboard-filters">
+                        <select id="dateFilter">
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="all">All Time</option>
+                        </select>
+                        <button id="refreshDashboard" class="btn btn-sm">🔄 Refresh</button>
+                        <button id="exportAllData" class="btn btn-sm btn-primary">📥 Export All</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid" id="statsGrid">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+
+                <div class="recent-logs" id="recentLogs">
+                    <!-- Recent logs will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 Completion History</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="export-buttons">
+                    <button id="exportCSV" class="btn btn-sm">📥 Export CSV</button>
+                    <button id="exportJSON" class="btn btn-sm">📥 Export JSON</button>
+                </div>
+                <div id="historyContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script type="module" src="firebase-config.js"></script>
+
+    <!-- Main Script -->
+    <script type="module" src="script-firebase.js"></script>
+</body>
+</html>
