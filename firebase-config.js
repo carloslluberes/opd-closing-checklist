@@ -1,14 +1,13 @@
 // Firebase Configuration for OPD Closing Checklist
-// Connected to CARE Card Lite project
+// Connected to opd-closing-tracker project
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB5TrKx0magR-LacIMYytkSqlumJBY8zUc",
-  authDomain: "care-card-lite.firebaseapp.com",
-  databaseURL: "https://care-card-lite-default-rtdb.firebaseio.com",
-  projectId: "care-card-lite",
-  storageBucket: "care-card-lite.firebasestorage.app",
-  messagingSenderId: "756725811205",
-  appId: "1:756725811205:web:ca23f715aa22f7b03df46c"
+  apiKey: "AIzaSyACtZDXDknQ3IccuTL6-KGN2hj15gbU_bY",
+  authDomain: "opd-closing-tracker.firebaseapp.com",
+  projectId: "opd-closing-tracker",
+  storageBucket: "opd-closing-tracker.firebasestorage.app",
+  messagingSenderId: "54145192142",
+  appId: "1:54145192142:web:f81ed66289c34eb4dd809f"
 };
 
 export default firebaseConfig;
